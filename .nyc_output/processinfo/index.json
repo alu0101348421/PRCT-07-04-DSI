@@ -1,0 +1,1 @@
+{"processes":{"2c2dffeb-09c9-46f1-8682-4ffc3e222225":{"parent":"564970fd-c6a8-416d-b2cf-704dc05e59d0","children":[]},"564970fd-c6a8-416d-b2cf-704dc05e59d0":{"parent":null,"children":["2c2dffeb-09c9-46f1-8682-4ffc3e222225"]}},"files":{"/home/usuario/0604/src/test.ts":["2c2dffeb-09c9-46f1-8682-4ffc3e222225"]},"externalIds":{}}
