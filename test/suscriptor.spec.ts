@@ -21,7 +21,7 @@ describe('Suscriptor', () => {
   });
 
   it('debería crear un suscriptor con una revista', () => {
-    expect(suscriptor.getRevista()).to.equal(revista);
+    expect(suscriptor.getObserver()).to.equal(revista);
   });
 
   it('debería poder recibir una notificación de que un nuevo número de la revista ha sido lanzado', () => {

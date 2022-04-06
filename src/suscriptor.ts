@@ -1,36 +1,41 @@
-import {Observer} from './interfaces';
+import {Observer, Observable} from './interfaces';
 import {Revista} from './revista';
 
 /**
- * Clase que representa a los suscriptores de una revista.
+ * Clase que representa suscriptores.
  * @class Suscriptor
  * @implements {Observer}
  * @attributes {string} nombre - Nombre del suscriptor.
- * @attributes {Revista} revista - Revista a la que se suscribe.
+ * @attributes {Observable} observable - Objeto al que se suscribe.
  */
 export class Suscriptor implements Observer {
   private nombre: string;
-  private revista: Revista;
+  private observable: Observable;
 
   /**
    * Crea una nueva instancia de la clase Suscriptor.
    * @param {string} nombre - Nombre del suscriptor.
+   * @param {Observable} observable - Objeto al que se suscribe
    * @memberof Suscriptor
    * @constructor
    */
-  constructor(nombre: string, revista: Revista) {
+  constructor(nombre: string, observable: Observable) {
     this.nombre = nombre;
-    this.revista = revista;
+    this.observable = observable;
   }
 
   /**
-   * Actualiza el suscriptor con la información de la revista y devuelve un mensaje de notificación.
-   * @param {Revista} revista - Revista a la que se suscribe.
+   * Actualiza el suscriptor con la información de objeto suscrito
+   * @param {Observable} observable - Observable a la que se suscribe.
    * @returns {string} Mensaje de notificación.
    * @memberof Suscriptor
    */
-  public update(revista: Revista): string {
-    return `${this.nombre} recibió el número ${revista.getNumeroActual()} de la revista ${revista.getNombre()}`;
+  public update(observable: Observable): string {
+    if (observable instanceof Revista) {
+      return `${this.nombre} recibió el número ${observable.getNumeroActual()} de la revista ${observable.getNombre()}`;
+    } else {
+      return `${this.nombre} recibió una actualización`;
+    }
   }
 
   /**
@@ -43,11 +48,11 @@ export class Suscriptor implements Observer {
   }
 
   /**
-   * Devuelve la revista a la que se suscribe.
-   * @returns {Revista} Revista a la que se suscribe.
+   * Devuelve el observable al que se suscribe.
+   * @returns {Observable} Observable al que se suscribe.
    * @memberof Suscriptor
    */
-  public getRevista(): Revista {
-    return this.revista;
+  public getObserver(): Observable {
+    return this.observable;
   }
 }
